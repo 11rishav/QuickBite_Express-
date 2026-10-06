@@ -1,0 +1,170 @@
+-- create database QuickBite_Express;
+
+-- use QuickBite_Express;
+
+-- create table orders
+--         (
+--         order_id varchar(100),
+--         customer_id varchar(100),
+--         restaurant_id varchar(100),
+--         delivery_partner_id varchar(100),
+--         order_timestamp datetime,
+--         subtotal_amount float,
+--         discount_amount float,
+--         delivery_fee float,
+--         total_amount float,
+--         is_cod int,
+--         is_cancelled int);
+--         
+--         ALTER TABLE orders
+-- MODIFY is_cod CHAR(5),
+-- MODIFY is_cancelled CHAR(5);
+--         LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/fact_orders.csv'
+-- INTO TABLE orders
+-- FIELDS TERMINATED BY ','
+-- ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- IGNORE 1 ROWS
+-- (order_id,
+--  customer_id,
+--  restaurant_id,
+--  delivery_partner_id,
+--  order_timestamp,
+--  subtotal_amount,
+--  discount_amount,
+--  delivery_fee,
+--  total_amount,
+--  is_cod,
+--  is_cancelled);
+--  
+--  
+
+-- create table delivery_performance
+--            (
+--            order_id varchar(100),
+--            actual_delivery_time_mins int,
+--            expected_delivery_time_mins int,
+--            distance_km float)
+--            
+-- load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/fact_delivery_performance.csv'
+-- into table delivery_performance
+-- fields terminated by ','
+-- enclosed by '"'
+-- lines terminated by '\n'
+-- ignore 1 rows
+-- (order_id,	actual_delivery_time_mins,	expected_delivery_time_mins,	distance_km);
+
+-- create table restaurant
+--         (
+--         restaurant_id varchar(200),
+--         restaurant_name varchar(200),
+--         city varchar(200),
+--         cuisine_type varchar(200),
+--         partner_type varchar(200),
+--         avg_prep_time_min varchar(200),
+--         is_active char(5));
+--         
+-- load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/dim_restaurant.csv'
+-- into table restaurant
+-- fields terminated by ','
+-- enclosed by '"'
+-- lines terminated by '\n'
+-- ignore 1 rows
+-- (restaurant_id,	restaurant_name,	city,	cuisine_type,	partner_type,	avg_prep_time_min,	is_active);
+
+-- create table menu_items
+--          (
+--          menu_item_id varchar(200),
+--          restaurant_id varchar(200),
+--          item_name varchar(200),
+--          category varchar(200),
+--          is_veg char (5),
+--          price float(20));
+--          
+--          load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/dim_menu_item.csv'
+-- 		 into table menu_items
+--          fields terminated by ','
+--          enclosed by '"'
+--          lines terminated by '\n'
+--          ignore 1 rows
+--          (menu_item_id,	restaurant_id,	item_name,	category,	is_veg,	price);
+       
+       -- create table delivery_partner
+--                 (
+--                 delivery_partner_id varchar(200),
+--                 partner_name varchar(200),
+--                 city varchar(200),
+--                 vehicle_type varchar(200),
+--                 employment_type varchar(200),
+--                 avg_rating float,
+--                 is_active char(5));
+--        load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/dim_delivery_partner_.csv'
+--        into table delivery_partner
+--        fields terminated by ','
+--        enclosed by '"'
+--        lines terminated by '\n'
+--        ignore 1 rows
+--        (delivery_partner_id,	partner_name,	city,	vehicle_type,	employment_type, avg_rating,	is_active);
+       
+    -- create table customer
+--            (
+--            customer_id varchar(100),
+--            signup_date date,
+--            city varchar(100),
+--            acquisition_channel varchar(100));
+--            
+-- 	load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/dim_customer.csv'
+--     into table customer
+--     fields terminated by ','
+--     enclosed by '"'
+--     lines terminated by '\n'
+--     ignore 1 rows
+--     (customer_id,	@signup_date,	city,	acquisition_channel)
+--     SET signup_date = STR_TO_DATE(@signup_date, '%d-%m-%Y');
+
+-- create table rating
+--          (
+--          order_id varchar(200),
+--          customer_id varchar(200),
+--          restaurant_id varchar(200),
+--          rating float,
+--          review_text varchar(200),
+--          review_timestamp datetime,
+--          sentiment_score float
+--          );
+-- 		
+--         load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/fact_ratings.csv'
+--         
+--         into table rating
+--         fields terminated by ','
+--         enclosed by '"'
+--         lines terminated by '\n'
+--         ignore 1 rows
+--         (order_id,	customer_id, restaurant_id,	rating,	review_text,	@review_timestamp,	sentiment_score)
+--         set review_timestamp = str_to_date(@review_timestamp,'%d-%m-%Y %H:%i');
+
+-- create table order_items
+--          (
+--          order_id varchar(100),
+--          item_id varchar(100),
+--          menu_item_id varchar(100),
+--          restaurant_id varchar(100),
+--          quantity int,
+--          unit_price float,
+--          item_discount float,
+--          line_total float);
+--          
+-- 	Load data infile 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/fact_order_items.csv'
+--     into table order_items
+--     fields terminated by ','
+--     enclosed by '"'
+--     lines terminated by '\n'
+--     ignore 1 rows
+--     (order_id,	item_id,	menu_item_id,	restaurant_id,	quantity,	unit_price,	item_discount,	line_total);
+    
+
+    
+    
+    
+         
+         
